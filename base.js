@@ -8,6 +8,14 @@ bot.login(TOKEN);
 
 bot.on('ready', () => {
     console.info(`Logged in as ${bot.user.tag}!`);
+    bot.user.setStatus('available')
+    bot.user.setPresence({
+        game: {
+            name: 'with depression',
+            type: "STREAMING",
+            url: "https://www.twitch.tv/DeadRisingStar"
+        }
+    });
   });
 
-  bot.user.setPresence({ game: { name: 'with depression', type: "streaming", url: "https://www.twitch.tv/DeadRisingStar"}}); 
+  
