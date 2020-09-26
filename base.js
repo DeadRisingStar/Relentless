@@ -8,7 +8,7 @@ bot.login(TOKEN);
 
 bot.on('ready', () => {
     console.info(`Logged in as ${bot.user.tag}!`);
-    client.user.setPresence({
+    bot.user.setPresence({
         status: "online",  //You can show online, idle....
         game: {
             name: "with depression",  //The message shown
