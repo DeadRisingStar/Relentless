@@ -2,7 +2,7 @@ const Eris = require('eris')
 const cluster = require('cluster')
 const raven = require('raven')
 const Raven = require('raven')
-const redisLock = require('../db/interfaces/redis/redislock')
+
 const indexCommands = require('../miscellaneous/commandIndexer')
 const listenerIndexer = require('../miscellaneous/listenerIndexer')
 const cacheGuildInfo = require('./utils/cacheGuildSettings')
@@ -17,25 +17,10 @@ if (process.env.SENTRY_URI) {
   global.logger.warn('No Sentry URI provided. Error logging will be restricted to messages only.')
 }
 
-function connect () {
-  redisLock.lock('loggerinit', process.env.REDIS_LOCK_TTL).then(function (lock) {
-    global.logger.startup(`Shards ${cluster.worker.rangeForShard} have obtained a lock and are connecting now. Configured Redis TTL is ${process.env.REDIS_LOCK_TTL}ms.`)
-    global.bot.connect()
-    global.bot.once('ready', () => {
-      lock.unlock().catch(function (err) {
-        global.logger.warn(cluster.worker.rangeForShard + ' could not unlock, waiting')
-      })
-    })
-  }).catch(e => {
-    setTimeout(() => {
-      connect()
-    }, 15000)
-  }) // throw out not being able to obtain a lock.
-}
 
 async function init () {
   global.logger.info('Shard init')
-  global.redis = require('../db/clients/redis')
+ 
   global.bot = new Eris(process.env.BOT_TOKEN, {
     firstShardID: cluster.worker.shardStart,
     lastShardID: cluster.worker.shardEnd,
@@ -74,12 +59,12 @@ async function init () {
 }
 process.on('exit', (code) => {
   global.logger.error(`The process is exiting with code ${code}. Terminating pgsql connections...`)
-  require('../db/clients/postgres').end()
+  
 })
 
 process.on('SIGINT', async () => {
   global.logger.error('SIGINT caught. Cleaning up and exiting...')
-  require('../db/clients/postgres').end()
+  
   process.exit()
 })
 
