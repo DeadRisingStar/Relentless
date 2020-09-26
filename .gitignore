@@ -1,2 +1,5 @@
 node_modules
 .env
+index.js
+primary.js
+.env.example
