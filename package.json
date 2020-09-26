@@ -24,6 +24,7 @@
     "bluebird": "^3.7.2",
     "chalk": "^4.1.0",
     "cluster": "^0.7.7",
+    "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
     "eris": "github:curtisf/eris#dev",
     "eslint-plugin-react": "^7.20.6",
