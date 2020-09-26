@@ -2,7 +2,7 @@
   "name": "relentlessv1",
   "version": "1.0.0",
   "description": "Discord Bot",
-  "main": "index.js",
+  "main": "base.js",
   "scripts": {
     "test": "standard",
     "lint": "node_modules/.bin/eslint . --ext .js"
