@@ -10,7 +10,7 @@ bot.login(TOKEN);
 bot.on('ready', () => {
     console.info(`Logged in as ${bot.user.tag}!`);
     if (config.activity.streaming == true) {
-    bot.user.setActivity("with depression", {url: 'https://www.twitch.tv/deadrisingstar'}, {type: "STREAMING"});
+    bot.user.setActivity("with depression :) V4", {url: 'https://www.twitch.tv/deadrisingstar'}, {type: "STREAMING"});
     } else {
         bot.user.setActivity('depression V3', {type: "WATCHING"});
     }
