@@ -15,11 +15,21 @@ bot.on('ready', () => {
         bot.user.setActivity('depression V3', {type: "WATCHING"});
     }
   });
+  
   client.on('message', (message) => {
-    if (message.content == '/muteAll') {
+    if (message.content == '/ma') {
         let channel = message.member.voiceChannel;
         for (let member of channel.members) {
             member[1].setMute(true)
+        }
+     }
+  });
+
+  client.on('message', (message) => {
+    if (message.content == '/um') {
+        let channel = message.member.voiceChannel;
+        for (let member of channel.members) {
+            member[1].setMute(false)
         }
      }
   });
