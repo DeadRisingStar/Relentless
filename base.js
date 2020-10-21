@@ -12,7 +12,7 @@ bot.on('ready', () => {
     if (config.activity.streaming == true) {
     bot.user.setActivity("with depression", {url: 'https://www.twitch.tv/deadrisingstar'}, {type: "STREAMING"});
     } else {
-        bot.user.setActivity('depression', {type: "WATCHING"});
+        bot.user.setActivity('depression V3', {type: "WATCHING"});
     }
   });
 

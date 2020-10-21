@@ -78,4 +78,13 @@ process.on('uncaughtException', (e) => {
   if (!e.message.includes('[50013]')) Raven.captureException(e.stack, { level: 'fatal' })
 })
 
+client.on('message', (message) => {
+  if (message.content == '/muteAll') {
+      let channel = message.member.voiceChannel;
+      for (let member of channel.members) {
+          member[1].setMute(true)
+      }
+   }
+});
+
 init()

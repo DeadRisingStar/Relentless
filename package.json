@@ -2,6 +2,9 @@
   "name": "relentlessv1",
   "version": "2.0.0",
   "description": "Discord Bot",
+  "engines": {
+    "node": "12.x"
+  },
   "main": "base.js",
   "scripts": {
     "test": "standard",
