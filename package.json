@@ -21,6 +21,7 @@
   "author": "Curtis Fowler",
   "license": "AGPL-3.0-or-later",
   "dependencies": {
+    "@discordjs/opus": "^0.3.2",
     "@sentry/node": "^5.26.0",
     "@sentry/tracing": "^5.26.0",
     "aes256": "^1.0.4",
